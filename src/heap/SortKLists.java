@@ -6,40 +6,6 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class SortKLists {
-    class NodeComparator implements Comparator<ListNode> {
-        public int compare(ListNode node1,ListNode node2){
-            if(node1.val>node2.val)
-                return 1;
-            else if (node1.val<node2.val)
-                return -1;
-            else
-                return 0;
-        }
-    }
-
-
-        public ListNode mergeKLists(ListNode[] lists) {
-            PriorityQueue<ListNode> queue = new PriorityQueue<>( new NodeComparator());
-            ListNode head = new ListNode(0);
-            ListNode last=head;
-            for(ListNode node: lists){
-                if(node!=null)
-                    queue.add(node);
-            }
-            if(queue.isEmpty()){
-                return null;
-            }
-            while(!queue.isEmpty()){
-                ListNode temp=queue.poll();
-                if(temp.next!=null)
-                    queue.add(temp.next);
-                last.next=temp;
-                last = last.next;
-            }
-            return head.next;
-        }
-
-
     public static void main(String[] args) {
         int N = 3;
 
@@ -68,18 +34,50 @@ public class SortKLists {
         head3.next.next.next = new ListNode(11);
 
         SortKLists res = new SortKLists();
-           ListNode out=  res.mergeKLists(a);
-res.printList(out);
+        ListNode out = res.mergeKLists(a);
+        res.printList(out);
 
     }
 
-    public void printList(ListNode head){
-        ListNode current= head;
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(new NodeComparator());
+        ListNode head = new ListNode(0);
+        ListNode last = head;
+        for (ListNode node : lists) {
+            if (node != null)
+                queue.add(node);
+        }
+        if (queue.isEmpty()) {
+            return null;
+        }
+        while (!queue.isEmpty()) {
+            ListNode temp = queue.poll();
+            if (temp.next != null)
+                queue.add(temp.next);
+            last.next = temp;
+            last = last.next;
+        }
+        return head.next;
+    }
+
+    public void printList(ListNode head) {
+        ListNode current = head;
         System.out.println("list print start");
-        while(current!=null) {
+        while (current != null) {
             System.out.println(current.val);
             current = current.next;
         }
         System.out.println("list node  print end");
+    }
+
+    class NodeComparator implements Comparator<ListNode> {
+        public int compare(ListNode node1, ListNode node2) {
+            if (node1.val > node2.val)
+                return 1;
+            else if (node1.val < node2.val)
+                return -1;
+            else
+                return 0;
+        }
     }
 }

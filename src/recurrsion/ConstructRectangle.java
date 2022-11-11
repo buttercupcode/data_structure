@@ -2,30 +2,31 @@ package recurrsion;
 
 public class ConstructRectangle {
     public static void main(String[] args) {
-        ConstructRectangle cr= new ConstructRectangle();
+        ConstructRectangle cr = new ConstructRectangle();
 
-        int [] factors=cr.constructRectangle(9999992);
-for(int a: factors)
-{
+        int[] factors = cr.constructRectangle(9999992);
+        for (int a : factors) {
 
-    System.out.print(a+",");
-}
-    }
-        public int[] constructRectangle(int area) {
-            int mid= (int)Math.sqrt(area);
-            int l= mid; int w=mid;
-            while(l<=area){
-                if(l*w== area)
-                    break;
-
-                else if(l*w>area)
-                    w--;
-
-                else
-                    l++;
-            }
-            return new int[]{l,w};
+            System.out.print(a + ",");
         }
+    }
+
+    public int[] constructRectangle(int area) {
+        int mid = (int) Math.sqrt(area);
+        int l = mid;
+        int w = mid;
+        while (l <= area) {
+            if (l * w == area)
+                break;
+
+            else if (l * w > area)
+                w--;
+
+            else
+                l++;
+        }
+        return new int[]{l, w};
+    }
 /*
             int[][] factors = new int[area/2][3];
             int count=0;
@@ -54,7 +55,7 @@ for(int a: factors)
 
 
             return optArea;*/
-        }
+}
         /*
             int[][] factors = new int[area][3];
             int count=0;

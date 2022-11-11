@@ -1,16 +1,27 @@
 package sorting;
 
 public class CountingSort {
-    void sort(int arr[])
-    {
+    // Driver method
+    public static void main(String[] args) {
+        CountingSort ob = new CountingSort();
+        int[] arr = {1, 4, 1, 2, 7, 5, 2};
+
+        ob.sort(arr);
+
+        System.out.print("Sorted character array is ");
+        for (int i = 0; i < arr.length; ++i)
+            System.out.print(arr[i]);
+    }
+
+    void sort(int[] arr) {
         int n = arr.length;
 
         // The output character array that will have sorted arr
-        int output[] = new int[n];
+        int[] output = new int[n];
 
         // Create a count array to store count of individual
         // characters and initialize count array as 0
-        int count[] = new int[10];
+        int[] count = new int[10];
         for (int i = 0; i < 10; ++i)
             count[i] = 0;
 
@@ -32,20 +43,6 @@ public class CountingSort {
 
         // Copy the output array to arr, so that arr now
         // contains sorted characters
-        for (int i = 0; i < n; ++i)
-            arr[i] = output[i];
-    }
-
-    // Driver method
-    public static void main(String args[])
-    {
-        CountingSort ob = new CountingSort();
-        int arr[] = { 1, 4, 1, 2, 7, 5, 2 };
-
-        ob.sort(arr);
-
-        System.out.print("Sorted character array is ");
-        for (int i = 0; i < arr.length; ++i)
-            System.out.print(arr[i]);
+        System.arraycopy(output, 0, arr, 0, n);
     }
 }

@@ -35,10 +35,10 @@ public class ArrayExamples {
         //System.out.println(k.canAttendMeetings(meetingIntervals));
         //System.out.println(k.nextGreaterElement(  new int[]{4,1,2},new int[]{1,3,4,2}));
         //System.out.println(k.rotate(new int[]{1, 2, 3, 4, 5, 6, 7}, 3));
-       // System.out.println(k.findMin(new int[]{3,4,5,1,2}));
-       // System.out.println(k.searchInRotatedSortedArray(new int[]{1,3},3));
+        // System.out.println(k.findMin(new int[]{3,4,5,1,2}));
+        // System.out.println(k.searchInRotatedSortedArray(new int[]{1,3},3));
         //System.out.println(k.findShortestSubArray(new int[]{1,2,2,3,1}));
-        k.nextGreaterElements(new int[]{1,2,1});
+        k.nextGreaterElements(new int[]{1, 2, 1});
     }
 
     public List<Integer> findKDistantIndices(int[] nums, int key, int k) {
@@ -510,19 +510,20 @@ public class ArrayExamples {
             start++;
         }
     }
+
     public int findMin(int[] nums) {
-        if(nums==null||nums.length==0)
+        if (nums == null || nums.length == 0)
             return 0;
         int n = nums.length;
-        int start=0,end= n-1;
-        while(start<end){
-            int mid= (start+end)/2;
-            if(mid>0 && nums[mid]<nums[mid-1])
+        int start = 0, end = n - 1;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (mid > 0 && nums[mid] < nums[mid - 1])
                 return nums[mid];
-            else if(nums[mid]>nums[end])
-                start=mid+1;
+            else if (nums[mid] > nums[end])
+                start = mid + 1;
             else
-                end=mid-1;
+                end = mid - 1;
         }
         return nums[start];
     }
@@ -530,19 +531,19 @@ public class ArrayExamples {
     public int searchInRotatedSortedArray(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
-        while (start <= end){
+        while (start <= end) {
             int mid = (start + end) / 2;
             if (nums[mid] == target)
                 return mid;
 
-            if (nums[start] <= nums[mid]){
+            if (nums[start] <= nums[mid]) {
                 if (target < nums[mid] && target >= nums[start])
                     end = mid - 1;
                 else
                     start = mid + 1;
             }
 
-            if (nums[mid] <= nums[end]){
+            if (nums[mid] <= nums[end]) {
                 if (target > nums[mid] && target <= nums[end])
                     start = mid + 1;
                 else
@@ -551,6 +552,39 @@ public class ArrayExamples {
         }
         return -1;
     }
+
+    public int findShortestSubArray(int[] nums) {
+        Map<Integer, Integer> count = new HashMap<>(), firstOccurrence = new HashMap<>();
+        int degree = 0, res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            firstOccurrence.putIfAbsent(nums[i], i);
+            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
+            if (count.get(nums[i]) > degree) {
+                degree = count.get(nums[i]);
+                res = i - firstOccurrence.get(nums[i]) + 1;
+            } else if (count.get(nums[i]) == degree) {
+                res = Math.min(res, i - firstOccurrence.get(nums[i]) + 1);
+            }
+        }
+        return res;
+    }
+
+    public int[] nextGreaterElements(int[] arr) {
+        int n = arr.length;
+        int[] result = new int[n];
+        Stack<Integer> stack = new Stack<>();
+        Arrays.fill(result, -1);
+        for (int i = 2 * n - 1; i >= 0; i--) {
+            int num = arr[i % n];
+            while (!stack.isEmpty() && stack.peek() <= num)
+                stack.pop();
+            if (!stack.isEmpty())
+                result[i % n] = stack.peek();
+            stack.push(num);
+        }
+        return result;
+    }
+
     class Interval {
         int start;
         int end;
@@ -564,37 +598,5 @@ public class ArrayExamples {
             this.start = start;
             this.end = end;
         }
-    }
-
-    public int findShortestSubArray(int[] nums) {
-        Map<Integer,Integer> count= new HashMap<>(), firstOccurrence = new HashMap<>();
-        int degree=0,res=0;
-        for(int i =0; i< nums.length;i++){
-            firstOccurrence.putIfAbsent(nums[i],i);
-            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
-            if(count.get(nums[i])> degree){
-                degree= count.get(nums[i]);
-                res= i-firstOccurrence.get(nums[i])+1;
-            }
-            else if(count.get(nums[i])==degree){
-                res=Math.min(res,i-firstOccurrence.get(nums[i])+1);
-            }
-        }
-        return res;
-    }
-    public int[] nextGreaterElements(int[] arr) {
-        int n = arr.length;
-        int[] result = new int[n];
-        Stack<Integer> stack  = new Stack<>();
-        Arrays.fill(result,-1);
-        for(int i=2*n-1;i>=0;i--){
-            int num=arr[i%n];
-            while(!stack.isEmpty() && stack.peek()<=num)
-                stack.pop();
-            if(!stack.isEmpty())
-                result[i%n]= stack.peek();
-            stack.push(num);
-        }
-        return result;
     }
 }
