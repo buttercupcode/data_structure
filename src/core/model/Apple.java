@@ -1,4 +1,4 @@
-package javaCore;
+package core.model;
 
 
 import java.util.Comparator;
