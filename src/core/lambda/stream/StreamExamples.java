@@ -9,6 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 
 public class StreamExamples {
@@ -48,7 +50,8 @@ public class StreamExamples {
         collect.stream().flatMapToInt(Arrays::stream).forEach(System.out::println);
         menu.stream().filter(Dish::isVegetarian).findAny().ifPresent(System.out::println);
         menu.stream().map(Dish::getCalories).reduce((c1, c2) -> c1 * c2).ifPresent(System.out::println);
-        System.out.println(menu.stream().count());
+        System.out.println((long) menu.size());
+        System.out.println(menu.stream().mapToInt(Dish::getCalories).max());
 
 
         //////
@@ -108,6 +111,31 @@ public class StreamExamples {
         //8.  Find the transaction with the smallest value.
         System.out.println("Min value of a transaction " + transactions.stream()
                 .min(Comparator.comparing(Transaction::getValue)));
+        System.out.println("Max even in 100 " + IntStream.
+                rangeClosed(1, 100)
+                .filter(x -> x % 2 == 0)
+                .max()
+                .orElse(-1));
+        ////////////////////////// Print 1st twenty pythagoreus
+        IntStream.rangeClosed(1, 100)
+                .boxed()
+                .limit(20)
+                .flatMap(a ->
+                        IntStream.rangeClosed(a, 100)
+                                .filter(b -> Math.sqrt(a * a + b * b) % 1 == 0)
+                                .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a * a + b * b)}))
+                .forEach(t -> System.out.println(t[0] + " " + t[1] + " " + t[2]));
+        Stream.of("java", "is", "always", "testing", "me")
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+// first 10 even numbers
+        Stream.iterate(0, n -> n + 2)
+                .limit(10)
+                .forEach(System.out::println);
+        /// fibonacci series
 
+        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
+                .limit(10)
+                .forEach(t -> System.out.print(t[0] + " "));
     }
 }
