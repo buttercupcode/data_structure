@@ -59,9 +59,10 @@ public class StreamCollectionExample {
         menu.stream()
                 .map(Dish::getCalories).reduce(Integer::sum)
                 .get();
-        menu.stream()
-                .mapToInt(Dish::getCalories)
+        long sum = menu.stream()
+                .mapToLong(Dish::getCalories)
                 .sum();
+        System.out.println("Calories total : " + sum);
         menu.stream()
                 .map(Dish::getName)
                 .collect(joining());
@@ -70,7 +71,7 @@ public class StreamCollectionExample {
                 .collect(reducing((d1, d2) -> d1 + d2))
                 .get();
         // menu.stream().collect(reducing((dish, dish2) -> dish.getName()+dish2.getName())).get()
-        menu.stream()
+        String collect8 = menu.stream()
                 .collect(reducing("", Dish::getName, (dish1Name, dish2Name) -> dish1Name + dish1Name));
         Map<Dish.Type, List<Dish>> collect = menu.stream()
                 .collect(groupingBy(Dish::getType));
@@ -126,5 +127,6 @@ public class StreamCollectionExample {
                         partitioningBy(Dish::isVegetarian,
                                 collectingAndThen(maxBy(Comparator.comparingInt(Dish::getCalories))
                                         , Optional::get)));
+        menu.stream().mapToLong(Dish::getCalories).reduce((c1, c2) -> c1 * 31 + c2).orElse(-1);
     }
 }
