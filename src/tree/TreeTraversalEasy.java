@@ -1,6 +1,12 @@
 package tree;
 
 public class TreeTraversalEasy extends TreeExamples {
+    private int currVal;
+    private int currCount = 0;
+    private int maxCount = 0;
+    private int modeCount = 0;
+    private int[] modes;
+
     public static void main(String[] args) {
 
         TreeTraversalEasy tte = new TreeTraversalEasy();
@@ -21,6 +27,8 @@ public class TreeTraversalEasy extends TreeExamples {
         TreeNode invertTree = tte.tree1();
         TreeNode treeNode = tte.invertTree(invertTree);
         System.out.println(treeNode);
+        int[] mode = tte.findMode(tree4);
+        System.out.println(mode);
     }
 
     public boolean isSameTree(TreeNode p, TreeNode q) {
@@ -145,5 +153,54 @@ public class TreeTraversalEasy extends TreeExamples {
         root.left = right;
         root.right = left;
         return root;
+    }
+
+    public int[] findMode(TreeNode tn) {
+        inOrder(tn);
+        modes = new int[modeCount];
+        modeCount = 0;
+        currCount = 0;
+        inOrder(tn);
+        return modes;
+    }
+
+    private void inOrder(TreeNode tn) {
+        TreeNode node = tn;
+        while (node != null) {
+            if (node.left == null) {
+                handleValue(node.val);
+                node = node.right;
+            } else {
+                TreeNode prev = node.left;
+                while (prev.right != null && prev.right != node) {
+                    prev = prev.right;
+                }
+                if (prev.right == null) {
+                    prev.right = node;
+                    node = node.left;
+
+                } else {
+                    prev.right = null;
+                    handleValue(node.val);
+                    node = node.right;
+                }
+            }
+        }
+    }
+
+    private void handleValue(int val) {
+        if (val != currVal) {
+            currVal = val;
+            currCount = 0;
+        }
+        currCount++;
+        if (currCount > maxCount) {
+            maxCount = currCount;
+            modeCount = 1;
+        } else if (currCount == maxCount) {
+            if (modes != null)
+                modes[modeCount] = currVal;
+            modeCount++;
+        }
     }
 }

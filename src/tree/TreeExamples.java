@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeExamples {
     public TreeNode tree1() {
           /*
@@ -67,5 +70,20 @@ public class TreeExamples {
         tree2.left.right = new TreeNode(3);
         tree2.right.left = new TreeNode(3);
         return tree2;
+    }
+
+    public List<Integer> preOrder(NArrayNode node) {
+        List<Integer> result = new ArrayList<>();
+        preOrder(node, result);
+        return result;
+    }
+
+    public void preOrder(NArrayNode node, List<Integer> list) {
+        if (node == null)
+            return;
+        list.add(node.val);
+        for (NArrayNode child : node.children) {
+            preOrder(child, list);
+        }
     }
 }
