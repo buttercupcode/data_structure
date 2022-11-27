@@ -24,6 +24,7 @@ public class TreeTraversalMedium extends TreeExamples {
         System.out.println(result);
         System.out.println(tm.goodNodes(tree2));
         System.out.println(tm.isValidBST(tree));
+        System.out.println(tm.maxPathSum(tree));
 
     }
 
@@ -195,5 +196,18 @@ public class TreeTraversalMedium extends TreeExamples {
         boolean left = tn.left == null || isValidBST(tn.left, minValue, Math.min(tn.val, maxValue));
         boolean right = tn.right == null || isValidBST(tn.right, Math.max(tn.val, minValue), maxValue);
         return left && right;
+    }
+
+    public int maxPathSum(TreeNode root) {
+        return maxGainPath(root, 0);
+    }
+
+    public int maxGainPath(TreeNode root, int max) {
+        if (root == null)
+            return 0;
+        int left = Math.max(maxGainPath(root.left, max), 0);
+        int right = Math.max(maxGainPath(root.right, max), 0);
+        max = Math.max(max, left + right + root.val);
+        return max;
     }
 }
