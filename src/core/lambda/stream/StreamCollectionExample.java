@@ -66,7 +66,7 @@ public class StreamCollectionExample {
         menu.stream()
                 .map(Dish::getName)
                 .collect(joining());
-        menu.stream()
+        String s = menu.stream()
                 .map(Dish::getName)
                 .collect(reducing((d1, d2) -> d1 + d2))
                 .get();
