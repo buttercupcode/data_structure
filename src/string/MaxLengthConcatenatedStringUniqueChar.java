@@ -1,15 +1,16 @@
 package string;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MaxLengthConcatenatedStringUniqueChar {
     private int result = 0;
 
     public static void main(String[] args) {
         MaxLengthConcatenatedStringUniqueChar m = new MaxLengthConcatenatedStringUniqueChar();
-        System.out.println(m.maxLength(List.of("a", "abc", "d", "de", "def")));
+        //System.out.println(m.maxLength(List.of("a", "abc", "d", "de", "def")));
+
+        System.out.println(m.maxLength3(List.of("a", "abc", "d", "de", "def")));
     }
 
     public int maxLengthOwn(List<String> arr) {
@@ -81,5 +82,47 @@ public class MaxLengthConcatenatedStringUniqueChar {
             set.add(c);
         }
         return true;
+    }
+
+    /*
+     * Approach 3
+     * */
+    public boolean isUnique(String str) {
+        char[] characters = str.toCharArray();
+        if (characters != null) Arrays.sort(characters);
+        for (int i = 0; i < characters.length - 1; i++) {
+            if (characters[i] == characters[i + 1]) return false;
+        }
+
+        return true;
+    }
+
+    private int dfs(List<String> arr, String path, int i, int maxLen, Map<String, Integer> mem) {
+        if (mem.get(path) != null) return mem.get(path);
+        boolean pathIsUnique = isUnique(path);
+
+        if (pathIsUnique && !arr.contains(path)) {
+            maxLen = Math.max(path.length(), maxLen);
+        }
+
+        if (i == arr.size() || !pathIsUnique) {
+            mem.put(path, maxLen);
+            return maxLen;
+        }
+
+        for (int j = i; j < arr.size(); j++) {
+            maxLen = dfs(arr, path + arr.get(j), j + 1, maxLen, mem);
+        }
+
+        mem.put(path, maxLen);
+        return maxLen;
+    }
+
+    public int maxLength3(List<String> args) {
+        int maxLen = 0;
+        List<String> arr = args.stream().filter(str -> isUnique(str)).collect(Collectors.toList());
+        Map<String, Integer> mem = new HashMap<>();
+        maxLen = dfs(arr, "", 0, maxLen, mem);
+        return maxLen;
     }
 }
