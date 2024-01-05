@@ -119,6 +119,7 @@ public class StreamCollectionExample {
                 }).collect(toList());
         collect7.forEach(System.out::println);
         Map<Boolean, List<Dish>> collect4 = menu.stream().collect(partitioningBy(Dish::isVegetarian));
+
         Map<Boolean, Map<Dish.Type, List<Dish>>> collect5 = menu.stream()
                 .collect(partitioningBy(Dish::isVegetarian, groupingBy(Dish::getType)));
         Map<Boolean, Dish> collect6 = menu

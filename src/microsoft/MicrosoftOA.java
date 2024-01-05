@@ -93,7 +93,7 @@ public class MicrosoftOA {
         }
         return room;
     }
-    public int minMeetingRooms(Interval[] intervals) {
+   /* public int minMeetingRooms(Interval[] intervals) {
         if(intervals==null||intervals.length==0)
             return 0;
 
@@ -118,5 +118,5 @@ public class MicrosoftOA {
         }
 
         return numberOfMeetingRoomsUsed;
-    }
+    }*/
 }
