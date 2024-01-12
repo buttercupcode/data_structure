@@ -7,7 +7,12 @@ public class MedianFromDataStream {
 
     PriorityQueue<Integer> small = new PriorityQueue<>(Comparator.reverseOrder());
     PriorityQueue<Integer> big = new PriorityQueue<>();
-    boolean even=true;
+    boolean even = true;
+
+    public MedianFromDataStream() {
+
+    }
+
     public static void main(String[] args) {
         MedianFromDataStream obj = new MedianFromDataStream();
         obj.addNum(1);
@@ -15,28 +20,24 @@ public class MedianFromDataStream {
         double param_2 = obj.findMedian();
         System.out.println(param_2);
     }
-    public MedianFromDataStream() {
-
-    }
 
     public void addNum(int num) {
-        if(even){
+        if (even) {
             big.offer(num);
             small.offer(big.poll());
-        }
-        else {
+        } else {
             small.offer(num);
             big.offer(small.poll());
         }
-        even=!even;
+        even = !even;
     }
 
     public double findMedian() {
         if (even)
-            return  (small.peek() + big.peek()) / 2.0;
+            return (small.peek() + big.peek()) / 2.0;
         else {
 
-             return small.peek();
+            return small.peek();
         }
 
     }
