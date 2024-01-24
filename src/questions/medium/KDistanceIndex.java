@@ -1,4 +1,4 @@
-package questions;
+package questions.medium;
 
 import java.util.ArrayList;
 import java.util.List;

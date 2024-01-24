@@ -1,4 +1,4 @@
-package questions;
+package questions.easy;
 
 import java.util.HashSet;
 import java.util.Set;

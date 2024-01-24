@@ -1,4 +1,4 @@
-package questions;
+package questions.easy;
 
 public class SearchInASortedArray {
     public static void main(String[] args) {

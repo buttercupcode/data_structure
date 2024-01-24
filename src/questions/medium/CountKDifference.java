@@ -1,4 +1,4 @@
-package questions;
+package questions.medium;
 
 import java.util.HashMap;
 import java.util.Map;

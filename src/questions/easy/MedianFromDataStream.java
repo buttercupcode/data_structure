@@ -1,4 +1,4 @@
-package questions;
+package questions.easy;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
