@@ -8,23 +8,22 @@ public class PalindromicSubstrings {
     }
 
     public int countSubstrings(String s) {
-        int count =0;
-        if(s.length()<2)
+        int count = 0;
+        if (s.length() < 2)
             return s.length();
-        for(int i =0; i<s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
 
             int low = i, high = i;
-            while(low>=0 && high <s.length() && s.charAt(low)==s.charAt(high))
-            {
+            while (low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)) {
                 count++;
                 low--;
                 high++;
             }
 
 
-             low = i; high = i+1;
-            while(low>=0 && high <s.length() && s.charAt(low)==s.charAt(high))
-            {
+            low = i;
+            high = i + 1;
+            while (low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)) {
                 count++;
                 low--;
                 high++;

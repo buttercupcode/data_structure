@@ -25,7 +25,7 @@ public class ValidParentheses {
             char c = s.charAt(i++);
 
             if (pairs.containsKey(c)) {
-                if(stack.isEmpty())
+                if (stack.isEmpty())
                     return false;
                 char e = stack.pop();
                 if (pairs.getOrDefault(c, '0') != e)

@@ -10,7 +10,7 @@ public class LongestRepeatCharacterReplacement {
 
         int[] map = new int[26];
         int i = 0, j = 0;
-        int maxLength = 0, maxCount =0;
+        int maxLength = 0, maxCount = 0;
         while (j < s.length()) {
             maxCount = Math.max(maxCount, ++map[s.charAt(j) - 'A']);
             while (j - i + 1 - maxCount > k) {

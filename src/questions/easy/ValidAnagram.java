@@ -5,30 +5,30 @@ import java.util.Map;
 
 public class ValidAnagram {
     public static void main(String[] args) {
-    ValidAnagram va = new ValidAnagram();
-    //String  s = "anagram", t = "nagaram";
-    //String   s = "rat", t = "car";
-    String   s = "ab", t = "a";
+        ValidAnagram va = new ValidAnagram();
+        //String  s = "anagram", t = "nagaram";
+        //String   s = "rat", t = "car";
+        String s = "ab", t = "a";
         boolean anagram = va.isAnagram(s, t);
         System.out.println(anagram);
     }
 
     public boolean isAnagram(String s, String t) {
 
-        if(s.length()!= t.length())
+        if (s.length() != t.length())
             return false;
-        Map<Character,Integer> map = new HashMap<>();
-        for(Character c: s.toCharArray()){
-            map.put(c,map.getOrDefault(c,0)+1);
+        Map<Character, Integer> map = new HashMap<>();
+        for (Character c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        for(Character c :t.toCharArray()){
-            int freq = map.getOrDefault(c,0);
-            if(freq==0)
+        for (Character c : t.toCharArray()) {
+            int freq = map.getOrDefault(c, 0);
+            if (freq == 0)
                 return false;
             else
-                map.put(c,freq-1);
+                map.put(c, freq - 1);
         }
-        return  true;
+        return true;
         /*if(s.length()!=t.length())
             return false;
         int[] freq = new int[26];

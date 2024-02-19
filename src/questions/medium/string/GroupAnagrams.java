@@ -8,19 +8,19 @@ public class GroupAnagrams {
         List<List<String>> lists = ga.groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
         System.out.println(lists);
     }
+
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map< String,List<String>> res = new HashMap<>();
-        for(String s : strs){
+        Map<String, List<String>> res = new HashMap<>();
+        for (String s : strs) {
             char[] ch = s.toCharArray();
             Arrays.sort(ch);
             String sorted = new String(ch);
-            if(res.containsKey(sorted)){
+            if (res.containsKey(sorted)) {
                 res.get(sorted).add(s);
-            }
-            else {
+            } else {
                 List<String> list = new ArrayList<>();
                 list.add(s);
-                res.put(sorted,list);
+                res.put(sorted, list);
             }
         }
         return new ArrayList<>(res.values());
