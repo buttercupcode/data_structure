@@ -5,25 +5,26 @@ import java.util.Stack;
 public class MinStack {
     int min = Integer.MAX_VALUE;
     Stack<Integer> stack = new Stack<>();
-    public static void main(String[] args) {
-
-    }
 
     public MinStack() {
 
     }
 
+    public static void main(String[] args) {
+
+    }
+
     public void push(int val) {
-        if(val<=min) {
+        if (val <= min) {
             stack.push(min);
-            min=val;
+            min = val;
         }
-       stack.push(val);
+        stack.push(val);
     }
 
     public void pop() {
-        if(min== stack.pop())
-            min=stack.pop();
+        if (min == stack.pop())
+            min = stack.pop();
     }
 
     public int top() {
@@ -31,7 +32,7 @@ public class MinStack {
     }
 
     public int getMin() {
-        return  min;
+        return min;
     }
 }
 
