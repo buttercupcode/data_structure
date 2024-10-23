@@ -30,6 +30,7 @@ public class LargestRectangle {
 
         int index;
         int height;
+
         Param(int index, int height) {
             this.height = height;
             this.index = index;
