@@ -11,14 +11,15 @@ public class LevelOrderTraversal {
     public static void main(String[] args) {
 
     }
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
-        while(!queue.isEmpty()){
-            int lenQ= queue.size();
+        while (!queue.isEmpty()) {
+            int lenQ = queue.size();
             List<Integer> list = new ArrayList<>();
-            for(int i = 0; i<lenQ; i++) {
+            for (int i = 0; i < lenQ; i++) {
                 TreeNode element = queue.poll();
 
 
@@ -28,6 +29,6 @@ public class LevelOrderTraversal {
             }
             res.add(list);
         }
-        return  res;
+        return res;
     }
 }

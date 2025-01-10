@@ -11,18 +11,18 @@ public class ValidBSTree {
     }
 
     public boolean isValidBST(TreeNode root) {
-        TreeNode current = root,preCurr=null;
+        TreeNode current = root, preCurr = null;
         Stack<TreeNode> stack = new Stack<>();
-        while (current!=null || !stack.isEmpty()){
-            while (current!=null){
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
                 stack.push(current);
-                current=current.getLeft();
+                current = current.getLeft();
             }
-            current= stack.pop();
-            if(preCurr!=null && current.getVal()<=preCurr.getVal())
+            current = stack.pop();
+            if (preCurr != null && current.getVal() <= preCurr.getVal())
                 return false;
-            preCurr=current;
-            current=current.getRight();
+            preCurr = current;
+            current = current.getRight();
 
         }
         return true;

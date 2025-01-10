@@ -11,20 +11,21 @@ public class RightSideView {
     public static void main(String[] args) {
 
     }
+
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if(root==null)
-            return  res;
+        if (root == null)
+            return res;
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.offer(root);
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int size = queue.size();
-            int output=0;
-            for(int i = 0; i<size;i++){
+            int output = 0;
+            for (int i = 0; i < size; i++) {
                 TreeNode t = queue.poll();
-                output=t.getVal();
-                if(t.getLeft()!=null) queue.offer(t.getLeft());
-                if(t.getRight()!=null) queue.offer(t.getRight());
+                output = t.getVal();
+                if (t.getLeft() != null) queue.offer(t.getLeft());
+                if (t.getRight() != null) queue.offer(t.getRight());
             }
             res.add(output);
         }
