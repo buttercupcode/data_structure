@@ -11,7 +11,7 @@ public class RemoveDuplicate26 {
         int idx = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[idx] != nums[i]) {
-                nums[idx+1] = nums[i];
+                nums[idx + 1] = nums[i];
                 idx++;
             }
         }
