@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class ContainsNearbyDuplicate {
+public class ContainsNearbyDuplicate219 {
     public static void main(String[] args) {
-        ContainsNearbyDuplicate cnd = new ContainsNearbyDuplicate();
+        ContainsNearbyDuplicate219 cnd = new ContainsNearbyDuplicate219();
         int[] nums = new int[]{1, 2, 3, 1, 2, 3};//{1,2,3,1};
         //boolean b = cnd.containsNearbyDuplicateMySol(nums, 2);
         boolean b = cnd.containsNearByBetterSol(nums, 2);
@@ -37,4 +37,15 @@ public class ContainsNearbyDuplicate {
         }
         return false;
     }
+
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, Integer> field = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            Integer j = field.put(nums[i], i);
+            if (j != null && (i - j) <= k)
+                return true;
+        }
+        return false;
+    }
+
 }
