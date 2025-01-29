@@ -7,18 +7,19 @@ import java.util.List;
 public class ThreeSum {
     public static void main(String[] args) {
         ThreeSum s = new ThreeSum();
-        List<List<Integer>> l = s.threeSum(new int[]{0,1,1});
+        List<List<Integer>> l = s.threeSum(new int[]{0, 1, 1});
         System.out.println(l);
 
     }
+
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
         List<List<Integer>> res = new ArrayList<>();
-         int i =0;
+        int i = 0;
         while (i < n - 2) {
 
-            int begin = i+1, end = n - 1;
+            int begin = i + 1, end = n - 1;
             while (begin < end && begin < n - 1 && end > i) {
                 int sum = nums[i] + nums[begin] + nums[end];
                 if (sum == 0) {
@@ -39,13 +40,13 @@ public class ThreeSum {
 
                 } else if (sum > 0) {
                     do {
-                        end-=1;
-                    } while (begin< end && nums[end] == nums[end + 1]);
+                        end -= 1;
+                    } while (begin < end && nums[end] == nums[end + 1]);
                 } else {
-                    do{
-                        begin+=1;
+                    do {
+                        begin += 1;
                     }
-                    while (begin< end && nums[begin] == nums[begin - 1]);
+                    while (begin < end && nums[begin] == nums[begin - 1]);
                 }
 
             }

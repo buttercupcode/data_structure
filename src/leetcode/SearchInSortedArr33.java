@@ -31,42 +31,41 @@ public class SearchInSortedArr33 {
         }
         return -1;
     }
+
     public int searchInSortedArrUnderstandableSol(int[] nums, int target) {
 
         int n = nums.length;
 
-        int low = 0, high = n-1 , minIdx = 0;
+        int low = 0, high = n - 1, minIdx = 0;
 
-        while(low<high){
-            int mid = (low+high) /2;
-            if( nums[mid] > nums[high])
-                low = mid +1;
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] > nums[high])
+                low = mid + 1;
             else
                 high = mid;
         }
-        minIdx= low;
-        if( minIdx == 0){
+        minIdx = low;
+        if (minIdx == 0) {
             low = 0;
-            high = n-1;
-        }
-        else{
-            if( target>= nums[0] && target <= nums[minIdx-1]){
+            high = n - 1;
+        } else {
+            if (target >= nums[0] && target <= nums[minIdx - 1]) {
                 low = 0;
-                high = minIdx-1;
-            }
-            else {
+                high = minIdx - 1;
+            } else {
                 low = minIdx;
-                high = n-1;
+                high = n - 1;
             }
         }
-        while(low<= high){
-            int mid = (low+high)/2;
-            if( nums[mid]== target){
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == target) {
                 return mid;
-            }else if(nums[mid]<target){
-                low= mid+1;
-            }else{
-                high=mid-1;
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
 
         }
