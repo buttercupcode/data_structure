@@ -6,9 +6,10 @@ import java.util.Deque;
 public class MaxSlidingWindow239 {
     public static void main(String[] args) {
         MaxSlidingWindow239 m = new MaxSlidingWindow239();
-       int[] k =  m.maxSlidingWindow(new int[]{1,3,-1,-3,5,3,6,7},3);
+        int[] k = m.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
         System.out.println(k);
     }
+
     public int[] maxSlidingWindow(int[] nums, int k) {
         int numsLength = nums.length;
         int[] result = new int[numsLength - k + 1]; // Array to store the max values for each window
@@ -31,7 +32,7 @@ public class MaxSlidingWindow239 {
 
             // When we've hit size k, add the current max to the result
             // This corresponds to the index at the front of the deque
-            if ((i >= k - 1) && !deque.isEmpty()){
+            if ((i >= k - 1) && !deque.isEmpty()) {
                 result[j++] = nums[deque.peekFirst()];
             }
         }

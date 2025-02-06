@@ -154,7 +154,7 @@ public class TreeTraversalBasic extends TreeExamples {
                 TreeNode n = queue.peek();
                 if (n.left != null) queue.offer(n.left);
                 if (n.right != null) queue.offer(n.right);
-                levelList.add(queue.poll().val);
+                levelList.add(Objects.requireNonNull(queue.poll()).val);
             }
             if (!levelList.isEmpty())
                 result.add(levelList);
@@ -203,7 +203,7 @@ public class TreeTraversalBasic extends TreeExamples {
     }
 
     public int findMaxRecursion(TreeNode root) {
-        int left = Integer.MIN_VALUE, right = Integer.MIN_VALUE, max = Integer.MIN_VALUE;
+        int left, right, max;
         if (root == null)
             return Integer.MIN_VALUE;
         max = root.val;
