@@ -216,6 +216,23 @@ public class TreeTraversalBasic extends TreeExamples {
 
     }
 
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+
+        while (!stack.isEmpty() || curr != null) {
+            while (curr != null) {
+                res.add(curr.val);
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            curr = curr.right;
+        }
+        return res;
+    }
+
     public List<Integer> InOrderTryDiffApproach(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> lis = new ArrayList<>();

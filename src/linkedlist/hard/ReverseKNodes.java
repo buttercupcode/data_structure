@@ -103,4 +103,25 @@ public class ReverseKNodes {
         }
         return head;
     }
+
+    public ListNode rev(ListNode head, int k) {
+        ListNode curr = head;
+
+        int count = 0;
+        while (count <= k && curr != null) {
+            curr = curr.next;
+            count++;
+        }
+        if (count == k) {
+            curr = rev(curr, k);
+            while (count-- > 0) {
+                ListNode tmp = head.next;
+                head.next = curr;
+                curr = head;
+                head = tmp;
+            }
+            head = curr;
+        }
+        return head;
+    }
 }
