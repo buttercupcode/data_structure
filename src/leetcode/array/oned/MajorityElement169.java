@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array.oned;
 
 public class MajorityElement169 {
     public static void main(String[] args) {

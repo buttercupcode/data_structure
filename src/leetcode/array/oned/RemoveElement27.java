@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array.oned;
 
 import static java.util.Arrays.sort;
 
@@ -27,7 +27,8 @@ public class RemoveElement27 {
             System.out.print(i);
         }
 
-
+        k = removeElement27.removeElements(new int[]{3, 2, 2, 3},3);
+        System.out.println(k);
     }
 
     public int removeElement(int[] nums, int val) {
@@ -40,4 +41,23 @@ public class RemoveElement27 {
         }
         return index;
     }
+    public int removeElements(int[] nums, int val){
+
+                int i =0, j = nums.length-1;
+                while(i<j){
+
+                    if(nums[i]==val){
+                        int swap= nums[i];
+                        nums[i]= nums[j];
+                        nums[j]=swap;
+                        j--;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                return j+1;
+            }
+
 }
