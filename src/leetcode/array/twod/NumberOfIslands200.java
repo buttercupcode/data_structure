@@ -14,7 +14,6 @@ public class NumberOfIslands200 {
 
 
     public int numIslands(char[][] grid) {
-        boolean[][] visited = new boolean[grid.length][grid[0].length];
         int count=0;
         for(int i = 0; i<grid.length ; i++){
             for(int j =0; j<grid.length; j++){
@@ -28,9 +27,11 @@ public class NumberOfIslands200 {
     }
 
     public void helper(char[][] grid,int row,int col){
-        if(row>=grid.length||col>=grid[0].length || row<0 || col<0 || grid[row][col]=='0')
-            return ;
+        int nr= grid.length;
+        int nc= grid[0].length;
 
+        if(row>=nr||col>=nc || row<0 || col<0 || grid[row][col]=='0')
+            return ;
 
             grid[row][col]='0';
              helper(grid,row,col+1);

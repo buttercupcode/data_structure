@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.binary.search;
 
 public class Search2DMatrix74 {
     public static void main(String[] args) {

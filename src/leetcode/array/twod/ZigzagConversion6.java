@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array.twod;
 
 import java.util.ArrayList;
 import java.util.List;

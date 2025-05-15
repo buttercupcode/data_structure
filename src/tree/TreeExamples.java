@@ -71,7 +71,45 @@ public class TreeExamples {
         tree2.right.left = new TreeNode(3);
         return tree2;
     }
+    /**
+     * 1
+     * /   \
+     * 2       3
+     * \     /
+     * 4   5
+     */
+    public TreeNode tree5() {
+        /**
+         * This si a
+         *
+         **/
+        TreeNode tree1 = new TreeNode(1);
+        tree1.left = new TreeNode(2);
+        tree1.right = new TreeNode(3);
+        tree1.left.right = new TreeNode(4);
+        tree1.right.left = new TreeNode(5);
+        return tree1;
+    }
 
+    /**
+     * 1
+     * /   \
+     * 2       3
+     * \     /
+     * 4   5
+     */
+    public TreeNode tree6() {
+        /**
+         * This si a
+         *
+         **/
+        TreeNode tree1 = new TreeNode(4);
+        tree1.left = new TreeNode(2);
+        tree1.right = new TreeNode(6);
+        tree1.left.left = new TreeNode(1);
+        tree1.right.left = new TreeNode(3);
+        return tree1;
+    }
     public List<Integer> preOrder(NArrayNode node) {
         List<Integer> result = new ArrayList<>();
         preOrder(node, result);
