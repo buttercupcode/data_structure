@@ -71,6 +71,7 @@ public class TreeExamples {
         tree2.right.left = new TreeNode(3);
         return tree2;
     }
+
     /**
      * 1
      * /   \
@@ -110,6 +111,7 @@ public class TreeExamples {
         tree1.right.left = new TreeNode(3);
         return tree1;
     }
+
     public List<Integer> preOrder(NArrayNode node) {
         List<Integer> result = new ArrayList<>();
         preOrder(node, result);

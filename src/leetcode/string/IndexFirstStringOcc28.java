@@ -36,23 +36,23 @@ public class IndexFirstStringOcc28 {
     public int strStrUsingRabinKarp(String haystack, String needle) {
         int m = needle.length();
         int n = haystack.length();
-        if(n<m) return -1;
-        int RADIX=26;
+        if (n < m) return -1;
+        int RADIX = 26;
         int MOD = 1000000033;//where MOD is a large prime number.
         long MAX_WEIGHT = 1;
-        for(int i =0;i<n;i++)
-            MAX_WEIGHT=(MAX_WEIGHT*RADIX)%MOD;
+        for (int i = 0; i < n; i++)
+            MAX_WEIGHT = (MAX_WEIGHT * RADIX) % MOD;
         long hashNeedle = hashValue(needle, RADIX, MOD, m), hashHay = 0;
-        for (int windowStart = 0; windowStart <= n - m; windowStart++){
+        for (int windowStart = 0; windowStart <= n - m; windowStart++) {
             if (windowStart == 0) {
                 // Compute hash of the First Substring
                 hashHay = hashValue(haystack, RADIX, MOD, m);
-            }else{
+            } else {
                 hashHay = (((hashHay * RADIX) % MOD) -
-                        (((int) (haystack.charAt(windowStart - 1) - 'a') *
+                        (((haystack.charAt(windowStart - 1) - 'a') *
                                 MAX_WEIGHT) %
                                 MOD) +
-                        (int) (haystack.charAt(windowStart + m - 1) - 'a') +
+                        (haystack.charAt(windowStart + m - 1) - 'a') +
                         MOD) %
                         MOD;
             }
@@ -69,6 +69,7 @@ public class IndexFirstStringOcc28 {
         }
         return -1;
     }
+
     public int hashValue(String string, int RADIX, int MOD, int m) {
         long ans = 0;
         long factor = 1;

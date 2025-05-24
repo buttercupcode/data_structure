@@ -7,10 +7,11 @@ import java.util.Set;
 
 public class LowestCommonAncestorBT4676 {
 
+    private TreeNode lca;
+
     public static void main(String[] args) {
 
     }
-    private TreeNode lca;
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
         Set<Integer> set = new HashSet<>();

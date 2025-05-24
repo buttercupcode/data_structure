@@ -27,7 +27,7 @@ public class RemoveElement27 {
             System.out.print(i);
         }
 
-        k = removeElement27.removeElements(new int[]{3, 2, 2, 3},3);
+        k = removeElement27.removeElements(new int[]{3, 2, 2, 3}, 3);
         System.out.println(k);
     }
 
@@ -41,23 +41,22 @@ public class RemoveElement27 {
         }
         return index;
     }
-    public int removeElements(int[] nums, int val){
 
-                int i =0, j = nums.length-1;
-                while(i<j){
+    public int removeElements(int[] nums, int val) {
 
-                    if(nums[i]==val){
-                        int swap= nums[i];
-                        nums[i]= nums[j];
-                        nums[j]=swap;
-                        j--;
-                    }
-                    else
-                    {
-                        i++;
-                    }
-                }
-                return j+1;
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+
+            if (nums[i] == val) {
+                int swap = nums[i];
+                nums[i] = nums[j];
+                nums[j] = swap;
+                j--;
+            } else {
+                i++;
             }
+        }
+        return j + 1;
+    }
 
 }

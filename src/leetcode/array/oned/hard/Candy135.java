@@ -45,7 +45,7 @@ public class Candy135 {
                 candies[i] = candies[i - 1] + 1;
             }
         }
-        count = candies[n-1];
+        count = candies[n - 1];
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
                 candies[i] = Math.max(candies[i], candies[i + 1] + 1);
@@ -55,6 +55,7 @@ public class Candy135 {
         }
         return count;
     }
+
     public int candyM(int[] ratings) {
         int[] candies = new int[ratings.length];
         Arrays.fill(candies, 1);

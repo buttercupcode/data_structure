@@ -115,7 +115,7 @@ public class MinimumWindowSubstring26 {
         while (end < s.length()) {
             // Add one character from the right to the window
             char c = s.charAt(end);
-            windowCounts.put(c,windowCounts.getOrDefault(c, 0)+1);
+            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
 
 
             // If the frequency of the current character added equals to the

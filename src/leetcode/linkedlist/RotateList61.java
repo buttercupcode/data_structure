@@ -15,40 +15,41 @@ public class RotateList61 {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
-        ListNode l = r.rotateRight(l1,2);
+        ListNode l = r.rotateRight(l1, 2);
         System.out.println(l);
     }
-    public ListNode rotateRight(ListNode head, int k) {
-    int size= size(head);
-    k = k % size;
-        if(k==0) return head;
-    int diff = size-k;
-    ListNode curr= head;
-        while(diff>1){
-        curr=curr.next;
-        diff--;
-    }
-    ListNode prev =curr;
-    ListNode newHead= curr.next;
 
-        while(curr.next!=null){
-        curr=curr.next;
-    }
-    prev.next=null;
-    curr.next=head;
+    public ListNode rotateRight(ListNode head, int k) {
+        int size = size(head);
+        k = k % size;
+        if (k == 0) return head;
+        int diff = size - k;
+        ListNode curr = head;
+        while (diff > 1) {
+            curr = curr.next;
+            diff--;
+        }
+        ListNode prev = curr;
+        ListNode newHead = curr.next;
+
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        prev.next = null;
+        curr.next = head;
 
         return newHead;
 
 
-}
-
-private int size(ListNode head){
-    int size=0;
-    ListNode curr= head;
-    while(curr!=null){
-        size++;
-        curr=curr.next;
     }
-    return size;
-}
+
+    private int size(ListNode head) {
+        int size = 0;
+        ListNode curr = head;
+        while (curr != null) {
+            size++;
+            curr = curr.next;
+        }
+        return size;
+    }
 }

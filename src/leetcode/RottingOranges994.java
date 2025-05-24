@@ -3,55 +3,61 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class RottingOranges994
-{
+class RottingOranges994 {
 
     public static void main(String[] args) {
-        int[][] test = new int[][]{{2,1,1},{1,1,0},{0,1,1}};
+        int[][] test = new int[][]{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
         RottingOranges994 r = new RottingOranges994();
         System.out.println(r.orangesRotting(test));
     }
+
     public int orangesRotting(int[][] grid) {
-        int count=0;
-        Queue<int[]> q = new LinkedList<>();
-        for(int i =0; i< grid.length;i++){
-            for(int j =0; j< grid[0].length;j++){
-                if(grid[i][j]==2){
-                    addToQueue(i,j,q,grid);
+        int mins = 0;
+        int initial_fresh = 0, spoiled = 0;
+        Queue<int[]> queue = new LinkedList<>();
+        int ROWS = grid.length;
+        int COLS = grid[0].length;
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (grid[i][j] == 2) {
+                    addToQueue(i, j, queue, grid);
+                } else if (grid[i][j] == 1) {
+                    initial_fresh++;
                 }
             }
         }
-        while(!q.isEmpty()){
-            int n = q.size();
-            boolean readyToRot= false;
-            for(int i =0; i< n; i++){
-                int[] curr= q.poll();
-                if(grid[curr[0]][curr[1]]==1){
-                    readyToRot= true;
-                    addToQueue(curr[0],curr[1],q,grid);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            boolean fresh = false;
+            for (int i = 0; i < size; i++) {
+                int[] curr = queue.poll();
+                int r = curr[0];
+                int c = curr[1];
+                if (grid[r][c] == 1) {
+                    fresh = true;
+                    grid[r][c] = 2;
+                    spoiled++;
+                    addToQueue(r, c, queue, grid);
                 }
-                grid[curr[0]][curr[1]]=2;
             }
-            if(readyToRot)
-                count++;
+            if (fresh)
+                mins++;
         }
-        return count;
-
+        return initial_fresh == spoiled ? mins : -1;
 
     }
 
-    void addToQueue(int i, int j, Queue<int[]> q, int[][] grid){
-        if(i+1<grid.length && grid[i+1][j]==1){
-            q.offer(new int[]{i+1,j});
-        }
-        if(i-1>=0 && grid[i-1][j]==1){
-            q.offer(new int[]{i-1,j});
-        }
-        if(j+1<grid[0].length && grid[i][j+1]==1)
-            q.offer(new int[]{i,j+1});
-        if(j-1>=0 && grid[i][j-1]==1)
-            q.offer(new int[]{i,j-1});
+    private void addToQueue(int i, int j, Queue<int[]> queue, int[][] grid) {
+        int ROWS = grid.length;
+        int COLS = grid[0].length;
+
+        if (i + 1 < ROWS && grid[i + 1][j] == 1)
+            queue.offer(new int[]{i + 1, j});
+        if (i - 1 >= 0 && grid[i - 1][j] == 1)
+            queue.offer(new int[]{i - 1, j});
+        if (j + 1 < COLS && grid[i][j + 1] == 1)
+            queue.offer(new int[]{i, j + 1});
+        if (j - 1 >= 0 && grid[i][j - 1] == 1)
+            queue.offer(new int[]{i, j - 1});
     }
-
-
 }

@@ -3,9 +3,9 @@ package leetcode;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class MaxSlidingWindow239 {
+public class SlidingWindowMax239 {
     public static void main(String[] args) {
-        MaxSlidingWindow239 m = new MaxSlidingWindow239();
+        SlidingWindowMax239 m = new SlidingWindowMax239();
         int[] k = m.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
         System.out.println(k);
     }

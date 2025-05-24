@@ -29,23 +29,23 @@ public class RemoveDuplicate80 {
         return l;
     }
 
-    public int removeDuplicates2(int[] nums){
-        if(nums.length==0)
+    public int removeDuplicates2(int[] nums) {
+        if (nums.length == 0)
             return 0;
-        int i =1;
-        int j =1;
-        int count=1;
-        while(i<nums.length){
-            if(nums[i]==nums[i-1]){
+        int i = 1;
+        int j = 1;
+        int count = 1;
+        while (i < nums.length) {
+            if (nums[i] == nums[i - 1]) {
                 count++;
-                if(count>2){
+                if (count > 2) {
                     i++;
                     continue;
-                }}
-            else{
-                count=1;
+                }
+            } else {
+                count = 1;
             }
-            nums[j]= nums[i];
+            nums[j] = nums[i];
             j++;
             i++;
         }

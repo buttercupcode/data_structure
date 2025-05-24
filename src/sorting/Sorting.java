@@ -35,7 +35,7 @@ public class Sorting {
     public void merge(int[] arr, int start, int end, int middle) {
         int[] left = new int[middle - start + 1];
         int[] right = new int[end - middle + 1];
-        System.arraycopy(arr, start + 0, left, 0, left.length);
+        System.arraycopy(arr, start, left, 0, left.length);
         System.arraycopy(arr, middle, right, 0, right.length);
 
         int i = 0, j = 0;

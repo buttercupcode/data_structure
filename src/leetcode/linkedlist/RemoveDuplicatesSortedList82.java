@@ -16,9 +16,9 @@ public class RemoveDuplicatesSortedList82 {
         l1.next = l2;
         l2.next = l3;
         l3.next = l33;
-        l33.next=l4;
+        l33.next = l4;
         l4.next = l44;
-        l44.next=l5;
+        l44.next = l5;
         RemoveDuplicatesSortedList82 r = new RemoveDuplicatesSortedList82();
         ListNode listNode = r.deleteDuplicates(l1);
         System.out.println(listNode);
@@ -28,37 +28,37 @@ public class RemoveDuplicatesSortedList82 {
         ListNode l1111 = new ListNode(1);
         ListNode l22 = new ListNode(2);
         ListNode l333 = new ListNode(3);
-        l11.next=l111;
-        l111.next=l1111;
+        l11.next = l111;
+        l111.next = l1111;
         //l1111.next=l22;
         //l22.next=l333;
         listNode = r.deleteDuplicates(l11);
         System.out.println(listNode);
         //l5.next=l6;
     }
+
     public ListNode deleteDuplicates(ListNode head) {
-        if(head==null)
+        if (head == null)
             return null;
-        ListNode prev= new ListNode(0);
-        ListNode next=head.next, curr=head;
-        while(next!=null){
+        ListNode prev = new ListNode(0);
+        ListNode next = head.next, curr = head;
+        while (next != null) {
 
-            if(next.val==curr.val){
+            if (next.val == curr.val) {
 
-                while(next!=null && next.val==curr.val){
-                    next=next.next;
+                while (next != null && next.val == curr.val) {
+                    next = next.next;
                 }
-                prev.next= next;
-                if(curr==head){
-                    head=next;
+                prev.next = next;
+                if (curr == head) {
+                    head = next;
                 }
-            }
-            else {
+            } else {
                 prev = curr;
 
             }
-            curr=next;
-            next = next!=null?next.next:null;
+            curr = next;
+            next = next != null ? next.next : null;
         }
         return head;
 

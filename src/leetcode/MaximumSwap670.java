@@ -45,7 +45,6 @@ public class MaximumSwap670 {
                 if (ch[max] < ch[--right]) {
                     max = right;
                 }
-                ;
 
             }
             if (ch[left] < ch[max]) {
